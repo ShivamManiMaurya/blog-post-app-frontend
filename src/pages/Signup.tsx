@@ -4,11 +4,11 @@ import Auth from "../components/Auth";
 
 const Signup = () => {
   return (
-    <div className="grid grid-cols-2 ">
-      <div>
-        <Auth />
+    <div className="grid md:grid-cols-2 grid-cols-1 bg-red-500 min-h-screen">
+      <div className="bg-blue-500">
+        <Auth isSignup={true} />
       </div>
-      <div className="invisible md:visible ">
+      <div className="bg-green-500 hidden md:block">
         <Quotes />
       </div>
     </div>
