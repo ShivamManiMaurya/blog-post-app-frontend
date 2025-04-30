@@ -9,3 +9,4 @@ export const API_ENDPOINTS = {
 };
 
 export const USER_ENDPOINT = "/api/v1";
+export const BLOG_ENDPOINT = "/api/v1/blog";

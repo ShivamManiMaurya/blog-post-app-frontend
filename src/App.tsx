@@ -9,6 +9,8 @@ import Blogs from "./pages/Blogs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,19 +19,21 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar
-          />
-          <Routes>
-            <Route path="/" element={<Navigate to="/signup" replace />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/blogs" element={<Blogs />} />
-          </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar
+            />
+            <Routes>
+              <Route path="/" element={<Navigate to="/signup" replace />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/blogs" element={<Blogs />} />
+            </Routes>
+          </BrowserRouter>
+        </Provider>
       </QueryClientProvider>
     </>
   );
