@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../redux/store";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
