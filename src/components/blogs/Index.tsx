@@ -1,11 +1,17 @@
 import React from "react";
 import Header from "./Header";
 import Blogs from "./Blogs";
+import useGetAllBlogs from "../../apis/hooks/services/useGetBlogsAll";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const { data, isLoading } = useGetAllBlogs();
+  const navigate = useNavigate();
+
   return (
     <div>
       {/* Headers  */}
+      <button onClick={() => navigate("/blogs/create")}>Create blog</button>
       <Header
         imgUrl={"https://i.pravatar.cc/40?img=12"}
         name={"ravi"}

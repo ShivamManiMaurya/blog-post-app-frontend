@@ -10,7 +10,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import { store, persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import CreateBlogs from "./pages/CreateBlogs";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,19 +22,22 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <BrowserRouter>
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar
-            />
-            <Routes>
-              <Route path="/" element={<Navigate to="/signup" replace />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/signin" element={<Signin />} />
-              <Route path="/blogs" element={<Blogs />} />
-            </Routes>
-          </BrowserRouter>
+          <PersistGate loading={null} persistor={persistor}>
+            <BrowserRouter>
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar
+              />
+              <Routes>
+                <Route path="/" element={<Navigate to="/signup" replace />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/signin" element={<Signin />} />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs/create" element={<CreateBlogs />} />
+              </Routes>
+            </BrowserRouter>
+          </PersistGate>
         </Provider>
       </QueryClientProvider>
     </>

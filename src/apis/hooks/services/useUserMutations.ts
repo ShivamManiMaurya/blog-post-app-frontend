@@ -1,23 +1,21 @@
-import { SignupInput } from "@shivam-maurya/medium-commons";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { userService } from "../../services/userService";
 import { toast } from "react-toastify";
-import { RootState, AppDispatch } from "../../../redux/store";
+import { AppDispatch } from "../../../redux/store";
 import { setAuthToken } from "../../../redux/slices/authSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Some } from "../../../helpers/Some";
+import { useNavigate } from "react-router-dom";
 
-const userMutation = () => {
-  const auth = useSelector((state: RootState) => state.auth);
+const useUserMutations = () => {
   const dispatch = useDispatch<AppDispatch>();
-
-  console.log("auth = ", auth);
+  const navigate = useNavigate();
 
   const signupUser = useMutation({
     mutationFn: userService.signupUser,
-    onSuccess: (data) => {
-      console.log("User created:", data);
+    onSuccess: () => {
       toast.success("Account created successfully.");
+      navigate("../signin");
     },
     onError: (d) => toast.error(d?.message || "Something went wrong."),
   });
@@ -25,12 +23,15 @@ const userMutation = () => {
   const singInUser = useMutation({
     mutationFn: userService.signinUser,
     onSuccess: (data) => {
-      console.log("token = ", data);
       const token = Some.String(data.data.token);
       dispatch(setAuthToken(token));
+      localStorage.setItem("token", token);
       toast.success("User login successfully.");
+      navigate("../blogs");
     },
-    onError: (d) => toast.error(d?.message || "Something went wrong."),
+    onError: (d) => {
+      toast.error(d?.message || "Something went wrong.");
+    },
   });
 
   return {
@@ -39,4 +40,4 @@ const userMutation = () => {
   };
 };
 
-export default userMutation;
+export default useUserMutations;

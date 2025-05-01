@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import InputField from "./commons/InputField";
 import { signupShapes } from "./utils/signupShapes";
 import { getSigninDetails, getSignupDetails } from "./utils/helpers";
-import { SignupInput, signupInput } from "@shivam-maurya/medium-commons";
-import userMutation from "../apis/hooks/services/useUserMutations";
+import { SignupInput, SigninInput } from "@shivam-maurya/medium-commons";
+import useUserMutations from "../apis/hooks/services/useUserMutations";
 import { toast } from "react-toastify";
-import { SigninInput } from "../../../commons/src";
+import Spinner from "./commons/Spinner";
 
 interface IProps {
   isSignup: boolean;
@@ -33,9 +33,10 @@ const Auth: React.FC<IProps> = ({ isSignup }) => {
       email: false,
       password: false,
     });
+  const [isLoading, setIsLoading] = useState(false);
 
   // api calls
-  const { signupUser, singInUser } = userMutation();
+  const { signupUser, singInUser } = useUserMutations();
 
   const fieldDetails = useMemo(() => {
     if (isSignup) {
@@ -52,6 +53,7 @@ const Auth: React.FC<IProps> = ({ isSignup }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     setTouched({
       name: true,
@@ -71,17 +73,22 @@ const Auth: React.FC<IProps> = ({ isSignup }) => {
         signinData.password.length >= 6;
 
     if (!isValid) {
-      console.log("not valid");
       toast.error("Please fill out all required fields correctly");
       return;
     }
 
     const payload = isSignup ? formData : signinData;
 
-    if (isSignup) {
-      signupUser.mutateAsync(payload);
-    } else {
-      singInUser.mutateAsync(payload);
+    try {
+      if (isSignup) {
+        await signupUser.mutateAsync(payload);
+      } else {
+        await singInUser.mutateAsync(payload);
+      }
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -109,8 +116,10 @@ const Auth: React.FC<IProps> = ({ isSignup }) => {
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition">
-              {!isSignup ? "Login" : "Sign Up"}
+              disabled={isLoading}
+              className="w-full py-2 px-4 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition flex justify-center items-center gap-2">
+              {isLoading && <Spinner />}
+              {isLoading ? "Processing..." : !isSignup ? "Login" : "Sign Up"}
             </button>
           </div>
         </form>
