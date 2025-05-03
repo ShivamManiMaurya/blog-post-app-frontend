@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import CreateBlogs from "./pages/CreateBlogs";
+import SingleBlog from "./components/blogs/SingleBlog";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/blogs/create" element={<CreateBlogs />} />
+                <Route path="/blog/:id" element={<SingleBlog />} />
               </Routes>
             </BrowserRouter>
           </PersistGate>

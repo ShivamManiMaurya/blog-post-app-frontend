@@ -8,7 +8,7 @@ interface IProps {
 
 const Header: React.FC<IProps> = ({ imgUrl, name, date }) => {
   return (
-    <div className=" flex items-center justify-start space-x-2 text-sm text-gray-600">
+    <div className=" flex items-center justify-start space-x-2 text-sm text-gray-600 py-2">
       <img
         src={imgUrl}
         alt={`${name} avatar`}

@@ -5,27 +5,24 @@ import useGetAllBlogs from "../../apis/hooks/services/useGetBlogsAll";
 import { useNavigate } from "react-router-dom";
 
 const Index = () => {
-  const { data, isLoading } = useGetAllBlogs();
+  const { data: allPosts, isLoading } = useGetAllBlogs();
   const navigate = useNavigate();
 
   return (
-    <div>
-      {/* Headers  */}
+    <div className="px-16 py-10 ">
       <button onClick={() => navigate("/blogs/create")}>Create blog</button>
-      <Header
-        imgUrl={"https://i.pravatar.cc/40?img=12"}
-        name={"ravi"}
-        date={"Dec 3, 2023"}
-      />
-      {/* Blogs  */}
-      <Blogs
-        title={
-          "default values if the input is invalid or of an unexpected type"
-        }
-        blog={
-          "Day 15 of #100DaysOfCode Added some utility functions that ensure type safety and allow setting default values if the input is invalid or of an unexpected type"
-        }
-      />
+      <hr className="my-4 border-t border-gray-300" />
+
+      {allPosts.map((post) => (
+        <div className=" py-4 " key={post.id}>
+          <Header
+            imgUrl={"https://i.pravatar.cc/40?img=12"}
+            name={post.authName}
+            date={post.createdAt}
+          />
+          <Blogs title={post.title} blog={post.content} id={post.id} />
+        </div>
+      ))}
     </div>
   );
 };

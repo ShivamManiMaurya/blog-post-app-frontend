@@ -3,7 +3,7 @@ export const API_ENDPOINTS = {
   USER_SIGNIN: "/user/signin",
   ADD_POST: "",
   UPDATE_POST: "/:id",
-  GET_POST: "/:id",
+  GET_POST: "/",
   GET_ALL_POST: "/bulk",
   DELETE_POST: "/delete/:id",
 };

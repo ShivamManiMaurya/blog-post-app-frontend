@@ -13,6 +13,16 @@ const getBlogs = async (token: string) => {
   return response.data;
 };
 
+const getBlog = async (paylod: { token: string; id: string }) => {
+  const response = await axiosInstance.get(
+    `${BLOG_ENDPOINT}${API_ENDPOINTS.GET_POST}${paylod.id}`,
+    {
+      headers: getHeadersWithToken(paylod.token),
+    }
+  );
+  return response.data;
+};
+
 const addBlog = async (payload: {
   token: string;
   data: {
@@ -32,5 +42,6 @@ const addBlog = async (payload: {
 
 export const postService = {
   getBlogs,
+  getBlog,
   addBlog,
 };
