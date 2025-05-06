@@ -1,3 +1,4 @@
+import { Token } from "./../../../../node_modules/acorn/dist/acorn.d";
 import { useQuery } from "@tanstack/react-query";
 import { Some } from "../../../helpers/Some";
 import { postService } from "../../services/postService";
@@ -8,10 +9,10 @@ import { toMaybe } from "../../../helpers/Maybe";
 import { postShapes } from "../../types/postShapes";
 
 function useGetSinglePost(id: string) {
-  const token = useCreds();
+  const creds = useCreds();
 
   const payload = {
-    token,
+    token: creds?.token,
     id,
   };
 
@@ -37,7 +38,6 @@ function useGetSinglePost(id: string) {
     queryKey: ["get-blog"],
     queryFn: getPost,
     refetchOnWindowFocus: false,
-    initialData: {} as postShapes.allPost,
   });
 }
 

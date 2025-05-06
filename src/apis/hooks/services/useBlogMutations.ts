@@ -21,23 +21,27 @@ const useBlogMutations = () => {
     onError: (d) => toast.error(d?.message || "Something went wrong."),
   });
 
-  //   const singInUser = useMutation({
-  //     mutationFn: userService.signinUser,
-  //     onSuccess: (data) => {
-  //       const token = Some.String(data.data.token);
-  //       dispatch(setAuthToken(token));
-  //       localStorage.setItem("token", token);
-  //       toast.success("User login successfully.");
-  //       navigate("../blogs");
-  //     },
-  //     onError: (d) => {
-  //       console.log("err = ", d);
-  //       toast.error(d?.message || "Something went wrong.");
-  //     },
-  //   });
+  const updatePost = useMutation({
+    mutationFn: postService.updateBlog,
+    onSuccess: () => {
+      toast.success("Story updated successfully.");
+    },
+    onError: (d) => toast.error(d?.message || "Something went wrong."),
+  });
+
+  const deletePost = useMutation({
+    mutationFn: postService.deleteBlog,
+    onSuccess: () => {
+      toast.success("Story deleted successfully.");
+      navigate("/blogs");
+    },
+    onError: (d) => toast.error(d?.message || "Something went wrong."),
+  });
 
   return {
     addPost,
+    updatePost,
+    deletePost,
   };
 };
 

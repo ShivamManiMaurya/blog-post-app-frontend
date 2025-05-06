@@ -2,10 +2,10 @@ export const API_ENDPOINTS = {
   USER_SIGNUP: "/user/signup",
   USER_SIGNIN: "/user/signin",
   ADD_POST: "",
-  UPDATE_POST: "/:id",
+  UPDATE_POST: "/",
   GET_POST: "/",
   GET_ALL_POST: "/bulk",
-  DELETE_POST: "/delete/:id",
+  DELETE_POST: "/delete/",
 };
 
 export const USER_ENDPOINT = "/api/v1";

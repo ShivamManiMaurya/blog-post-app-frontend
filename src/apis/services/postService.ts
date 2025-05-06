@@ -28,6 +28,7 @@ const addBlog = async (payload: {
   data: {
     title: string;
     content: string;
+    published?: boolean;
   };
 }) => {
   const response = await axiosInstance.post(
@@ -40,8 +41,40 @@ const addBlog = async (payload: {
   return response.data;
 };
 
+const updateBlog = async (payload: {
+  token: string;
+  id: string;
+  data: {
+    title: string;
+    content: string;
+    published?: boolean;
+  };
+}) => {
+  const response = await axiosInstance.patch(
+    `${BLOG_ENDPOINT}${API_ENDPOINTS.UPDATE_POST}${payload.id}`,
+    payload.data,
+    {
+      headers: getHeadersWithToken(payload.token),
+    }
+  );
+  return response.data;
+};
+
+const deleteBlog = async (payload: { token: string; id: string }) => {
+  const response = await axiosInstance.patch(
+    `${BLOG_ENDPOINT}${API_ENDPOINTS.DELETE_POST}${payload.id}`,
+    null,
+    {
+      headers: getHeadersWithToken(payload.token),
+    }
+  );
+  return response;
+};
+
 export const postService = {
   getBlogs,
   getBlog,
   addBlog,
+  updateBlog,
+  deleteBlog,
 };

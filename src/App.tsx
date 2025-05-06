@@ -37,6 +37,7 @@ function App() {
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/blogs/create" element={<CreateBlogs />} />
                 <Route path="/blog/:id" element={<SingleBlog />} />
+                <Route path="/blog/update/:id" element={<CreateBlogs />} />
               </Routes>
             </BrowserRouter>
           </PersistGate>
