@@ -39,7 +39,7 @@ Users should be able to:
 ### Links
 
 -   [Github Solution](https://github.com/ShivamManiMaurya/blog-post-app-frontend)
--   [Live Site](https://blog-post-app-frontend-fsx1.vercel.app/signup)
+-   [Live Site](https://blog-post-app-frontend-fsx1.vercel.app)
 
 ## My process
 
