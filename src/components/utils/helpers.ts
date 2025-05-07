@@ -1,4 +1,3 @@
-import { signupInput } from "./../../../../commons/src/index";
 import React from "react";
 import { signupShapes } from "./signupShapes";
 import { SigninInput, SignupInput } from "@shivam-maurya/medium-commons";
