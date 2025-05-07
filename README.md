@@ -10,9 +10,6 @@ This is a blog post web application that features user authentication with signu
     -   [Links](#links)
 -   [My process](#my-process)
     -   [Built with](#built-with)
-    -   [What I learned](#what-i-learned)
-    -   [Continued development](#continued-development)
-    -   [Useful resources](#useful-resources)
 -   [Author](#author)
 
 ## Overview
@@ -31,6 +28,40 @@ Users should be able to:
 
 ![](./screenshot.jpg)
 
-| Home page PC                                                          |
-| --------------------------------------------------------------------- |
-| ![Home_Page_PC](./src/assets/images/screenshots/freskartEcomm_pc.png) |
+| Signup Page                                                       | Signin Page                                                          |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ![Tablet](./src/assets/images/screenshots/signupPage.png)         | ![Mobile](./src/assets/images/screenshots/signinPage.png)            |
+| -----------------------------------------------------------------------------------------------------------------------------------------|
+| Blogs Page                                                        | Full Single Blog Page                                                |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ![Tablet](./src/assets/images/screenshots/blogsPage.png)          | ![Mobile](./src/assets/images/screenshots/singleBlogPage.png)        |
+| -----------------------------------------------------------------------------------------------------------------------------------------|
+| Blog Edit Page                                                                                                                           |
+| ---------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Home_Page_PC](./src/assets/images/screenshots/blogEditPage.png)                                                                        |
+
+### Links
+
+-   [Github Solution](https://github.com/ShivamManiMaurya/blog-post-app-frontend)
+-   [Live Site](https://freshkart-ecommerce-mern-project-frontend.vercel.app)
+
+## My process
+
+### Built with
+
+-   HTML5
+-   CSS custom properties
+-   [TailwindCSS](https://tailwindcss.com/) - For styling
+-   Typescript - For both frontend and backend
+-   [React](https://reactjs.org/) - JS library
+-   [PostgreSQL](https://www.postgresql.org/) - For database
+-   HonoJs - For backend
+-   [Redux-Toolkit](https://redux-toolkit.js.org/) - For managing the state
+-   [Prisma](https://www.prisma.io/) - ORM (Object-Relational Mapping) tool for Database modelling
+
+## Author
+
+-   Website - [Shivam Maurya](https://shivammanimaurya.github.io/my_portfolio_website/)
+-   GitHub Page - [Shivam Maurya GitHub](https://github.com/ShivamManiMaurya)
+-   Linkedin - [@shivammanimaurya](https://www.linkedin.com/in/shivammanimaurya)
+
