@@ -32,10 +32,8 @@ Users should be able to:
 | ----------------------------------------------------------------- | -------------------------------------------------------------------- |
 | ![Tablet](./src/assets/images/screenshots/signupPage.png)         | ![Mobile](./src/assets/images/screenshots/signinPage.png)            |
 | Blogs Page                                                        | Full Single Blog Page                                                |
-| ----------------------------------------------------------------- | -------------------------------------------------------------------- |
 | ![Tablet](./src/assets/images/screenshots/blogsPage.png)          | ![Mobile](./src/assets/images/screenshots/singleBlogPage.png)        |
 | Blog Edit Page                                                                                                                           |
-| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | ![Home_Page_PC](./src/assets/images/screenshots/blogEditPage.png)                                                                        |
 
 ### Links
